@@ -1,0 +1,35 @@
+@PortalFinancieroAPI_HostAddress = http://localhost:5178
+@userId = 550e8400-e29b-41d4-a716-446655440000
+
+### Registrar Pago
+POST {{PortalFinancieroAPI_HostAddress}}/api/pagos/registrar
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "tipoServicio": "agua",
+  "monto": 45.50,
+  "referencia": "C-123456-ABC",
+  "fechaVencimiento": "2026-04-30T23:59:59Z",
+  "observaciones": "Pago de agua"
+}
+
+### Obtener todos los pagos
+GET {{PortalFinancieroAPI_HostAddress}}/api/pagos/{{userId}}
+Accept: application/json
+
+### Obtener pagos pendientes
+GET {{PortalFinancieroAPI_HostAddress}}/api/pagos/pendientes/{{userId}}
+Accept: application/json
+
+### Marcar pago como pagado (cambiar pagoId)
+PATCH {{PortalFinancieroAPI_HostAddress}}/api/pagos/marcar-pagado/550e8400-e29b-41d4-a716-446655440001
+Content-Type: application/json
+
+### Eliminar pago pendiente (cambiar pagoId)
+DELETE {{PortalFinancieroAPI_HostAddress}}/api/pagos/550e8400-e29b-41d4-a716-446655440001
+Accept: application/json
+
+### Health check
+GET {{PortalFinancieroAPI_HostAddress}}/health
+Accept: application/json
