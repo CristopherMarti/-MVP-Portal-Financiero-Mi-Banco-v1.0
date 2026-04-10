@@ -132,24 +132,42 @@ async function cargarHistorial() {
   };
 
   if (!pagos || pagos.length === 0) {
-    el.innerHTML = `<p class="text-muted text-center py-4">Sin pagos.</p>`;
+    el.innerHTML = `
+      <div class="historial-empty">
+        <i class="bi bi-inbox"></i>
+        <p>Sin pagos realizados</p>
+      </div>
+    `;
     return;
   }
 
   el.innerHTML = `
-    <ul class="list-group list-group-flush">
-      ${pagos.map(p => `
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <div class="fw-semibold small text-capitalize">${p.servicio}</div>
-            <div class="text-muted small">
-              ${p.numero_contrato} · ${formatFecha(p.fecha)}
-            </div>
+    ${pagos.map(p => `
+      <div class="pago-item">
+        <div class="pago-item-header">
+          <div class="pago-item-servicio">
+            <i class="bi bi-${['agua', 'luz', 'cable', 'telefono', 'gas'].includes(p.servicio) ? 
+              {agua: 'droplet-fill', luz: 'lightning-fill', cable: 'tv', telefono: 'telephone-fill', gas: 'fire'}[p.servicio] : 'cart-fill'}"></i>
+            <span class="text-capitalize fw-semibold">${p.servicio}</span>
           </div>
-          <div class="fw-bold text-danger">- ${formatSoles(p.monto)}</div>
-        </li>
-      `).join('')}
-    </ul>`;
+          <span class="pago-item-monto">
+            ${formatSoles(p.monto)}
+          </span>
+        </div>
+        <div class="pago-item-meta">
+          <span class="pago-item-contrato">
+            <i class="bi bi-file-text me-1"></i>${p.numero_contrato}
+          </span>
+          <span class="pago-item-fecha">
+            <i class="bi bi-calendar me-1"></i>${formatFecha(p.fecha)}
+          </span>
+          <span class="pago-item-estado">
+            <i class="bi bi-check-circle me-1"></i>Completado
+          </span>
+        </div>
+      </div>
+    `).join('')}
+  `;
 }
 
 cargarHistorial();

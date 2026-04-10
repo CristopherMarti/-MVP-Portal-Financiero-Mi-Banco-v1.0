@@ -72,6 +72,50 @@ body {
   flex: 1;
   padding: 1.75rem 2rem;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main-content > .pagos-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Botones mejorados ── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+  border: none;
+  font-weight: 600;
+  padding: 0.65rem 1.5rem;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(26, 58, 107, 0.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0f2847 0%, #1e5a96 100%);
+  box-shadow: 0 8px 20px rgba(26, 58, 107, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #198754 0%, #13653f 100%);
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.25);
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #0d4c2d 0%, #0a3620 100%);
+  box-shadow: 0 8px 20px rgba(25, 135, 84, 0.4);
+  transform: translateY(-2px);
 }
 
 /* ── Cards de saldo ── */

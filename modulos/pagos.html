@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="../css/styles.css" rel="stylesheet">
+  <link href="../css/pagos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -24,9 +25,9 @@
 <div class="modal fade" id="modalConfirmar" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header border-0 pb-0">
+      <div class="modal-header">
         <h5 class="modal-title fw-bold">
-          <i class="bi bi-shield-check text-success me-2"></i>Confirmar pago
+          <i class="bi bi-shield-check me-2"></i>Confirmar pago
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
@@ -48,7 +49,7 @@
           Esta operación <strong>no se puede revertir</strong>. Verifica los datos antes de confirmar.
         </div>
       </div>
-      <div class="modal-footer border-0">
+      <div class="modal-footer">
         <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
         <button class="btn btn-success fw-semibold" id="btnConfirmarPago">
           <span id="btnConfText"><i class="bi bi-check2-circle me-2"></i>Confirmar pago</span>
@@ -95,83 +96,84 @@
     <h4 class="fw-bold mb-1"><i class="bi bi-credit-card-2-front me-2 text-primary"></i>Pago de Servicios</h4>
     <p class="text-muted small mb-4">Paga tus servicios básicos de forma rápida y segura</p>
 
-    <div class="row g-4">
+    <div class="pagos-container">
 
       <!-- Formulario de pago -->
-      <div class="col-12 col-lg-6">
-        <div class="card border-0 shadow-sm h-100">
-          <div class="card-header bg-white border-0 pt-3">
-            <h6 class="fw-bold mb-0"><i class="bi bi-pencil-square me-2 text-primary"></i>Nuevo pago</h6>
+      <div>
+        <div class="card-form-pago">
+          <div class="card-header border-0 pt-0">
+            <h6 class="fw-bold mb-0"><i class="bi bi-pencil-square me-2"></i>Nuevo pago</h6>
           </div>
           <div class="card-body">
             <form id="formPago" novalidate>
 
               <!-- Selector de servicio con íconos -->
               <div class="mb-3">
-                <label class="form-label fw-semibold">Tipo de servicio</label>
+                <label class="form-label">Tipo de servicio</label>
                 <div class="row g-2" id="servicioSelector">
                   <div class="col-6">
                     <input type="radio" class="btn-check" name="servicioRadio" id="srvAgua"   value="agua"     required>
-                    <label class="btn btn-outline-primary w-100 d-flex align-items-center gap-2" for="srvAgua">
+                    <label class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-2" for="srvAgua">
                       <i class="bi bi-droplet fs-5"></i> Agua
                     </label>
                   </div>
                   <div class="col-6">
                     <input type="radio" class="btn-check" name="servicioRadio" id="srvLuz"    value="luz">
-                    <label class="btn btn-outline-warning w-100 d-flex align-items-center gap-2" for="srvLuz">
+                    <label class="btn btn-outline-warning w-100 d-flex align-items-center justify-content-center gap-2" for="srvLuz">
                       <i class="bi bi-lightning fs-5"></i> Luz
                     </label>
                   </div>
                   <div class="col-6">
                     <input type="radio" class="btn-check" name="servicioRadio" id="srvCable"  value="cable">
-                    <label class="btn btn-outline-danger w-100 d-flex align-items-center gap-2" for="srvCable">
+                    <label class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2" for="srvCable">
                       <i class="bi bi-tv fs-5"></i> Cable
                     </label>
                   </div>
                   <div class="col-6">
                     <input type="radio" class="btn-check" name="servicioRadio" id="srvTel"    value="telefono">
-                    <label class="btn btn-outline-success w-100 d-flex align-items-center gap-2" for="srvTel">
+                    <label class="btn btn-outline-success w-100 d-flex align-items-center justify-content-center gap-2" for="srvTel">
                       <i class="bi bi-phone fs-5"></i> Teléfono
                     </label>
                   </div>
                   <div class="col-6">
                     <input type="radio" class="btn-check" name="servicioRadio" id="srvGas"    value="gas">
-                    <label class="btn btn-outline-secondary w-100 d-flex align-items-center gap-2" for="srvGas">
+                    <label class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2" for="srvGas">
                       <i class="bi bi-fire fs-5"></i> Gas
                     </label>
                   </div>
-                   <div class="col-6">
+                  <div class="col-6">
                     <input type="radio" class="btn-check" name="servicioRadio" id="srvOtros"    value="otros">
-                    <label class="btn btn-outline-info w-100 d-flex align-items-center gap-2" for="srvOtros">
+                    <label class="btn btn-outline-info w-100 d-flex align-items-center justify-content-center gap-2" for="srvOtros">
                       <i class="bi bi-cart fs-5"></i> Otros servicios
                     </label>
+                  </div>
                 </div>
               </div>
 
               <div class="mb-3">
-                <label class="form-label fw-semibold">N° de contrato / recibo</label>
+                <label class="form-label">N° de contrato / recibo</label>
                 <input type="text" id="contrato" class="form-control"
                        placeholder="Ej: 1234567890" required>
               </div>
 
               <div class="mb-3">
-                <label class="form-label fw-semibold">Monto a pagar (S/)</label>
+                <label class="form-label">Monto a pagar (S/)</label>
                 <div class="input-group">
-                  <span class="input-group-text fw-bold">S/</span>
+                  <span class="input-group-text">S/</span>
                   <input type="number" id="montoPago" class="form-control"
                          placeholder="0.00" min="1" step="0.01" required>
                 </div>
               </div>
 
               <div class="mb-4">
-                <label class="form-label fw-semibold">Cuenta origen</label>
+                <label class="form-label">Cuenta origen</label>
                 <select id="cuentaOrigen" class="form-select" required>
                   <option value="">Cargando cuentas...</option>
                 </select>
               </div>
 
-              <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
-                <i class="bi bi-send-check me-2"></i>Continuar
+              <button type="submit" class="btn-continuar w-100 py-3" style="margin-top: auto;">
+                <i class="bi bi-send-check"></i>Continuar
               </button>
             </form>
           </div>
@@ -179,12 +181,12 @@
       </div>
 
       <!-- Historial de pagos -->
-      <div class="col-12 col-lg-6">
-        <div class="card border-0 shadow-sm h-100">
-          <div class="card-header bg-white border-0 pt-3">
-            <h6 class="fw-bold mb-0"><i class="bi bi-clock-history me-2 text-primary"></i>Pagos realizados</h6>
+      <div>
+        <div class="card-historial-pagos">
+          <div class="card-header border-0 pt-0">
+            <h6 class="fw-bold mb-0"><i class="bi bi-clock-history me-2"></i>Pagos realizados</h6>
           </div>
-          <div class="card-body p-0">
+          <div class="card-body">
             <div id="historialPagos">
               <div class="text-center py-4">
                 <div class="spinner-border spinner-border-sm text-primary"></div>
